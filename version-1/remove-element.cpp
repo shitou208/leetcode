@@ -8,5 +8,16 @@ Your function should return length = 2, with the first two elements of nums bein
 */
 
 int removeElement(int* nums, int numsSize, int val) {
-    
+     int length=0,i;
+    //先判读数组为空的时候
+    if(numsSize==0) {return 0;}
+    else{
+      for(i=0;i<numsSize;i++){
+      	if(nums[i]!=val){
+            nums[length]=nums[i];
+      		length++;
+      	}
+      }
+     return length;
+    }
 }
