@@ -55,3 +55,27 @@ bool isPrime(int num){
 	}
 	return true;
 }
+
+/*Sieve of Eratosthenes，最高效的一种处理算法*/
+int countPrimes(int n) {
+    if(n==0||n==1||n==2||n==3){
+		return n==3?1:0;
+	}
+    bool isPrime[n];
+    int j,i,m,count=0;
+    for(m=0;m<n;m++){//假定所有的数都为质数，然后排除非质数
+        isPrime[m]=true;
+    }
+    for(j=2;j*j<n;j++){
+    	if(!isPrime[j]){
+    		continue;
+    	}
+    	for(i=j*j;i<n;i=i+j){
+    		isPrime[i]=false;
+    	}
+    }
+    for(m=0;m<n;m++){
+        if(isPrime[m]){count++;}
+    }
+    return count-2;//排除0和1
+}
